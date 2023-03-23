@@ -12,7 +12,7 @@ Define a probe (class Probe) that can be inserted into a class (class Target) as
   * Hint: the information that a Target should stream is the information that its contained Probe can stream.
 * Use the `delete` keyword to delete the copy constructor and assignment operator for the probe.
 
-## Array
+## DynamicArray
 An array is a common structure for storing information. In many languages, one must specify the size of the array in advance of its use. Frequently, however, one does not know how much data will need to be stored. A common solution is to declare the array to be much larger than is expected to be necessary hoping it will be large enough. This is certainly not the most efficient solution.
 
 Design an array that expands as data is entered and contracts when it is removed. You will need to define a private data structure to support the array. Use one of the STL collection classes such as vector, list, or deque.
@@ -32,9 +32,9 @@ int get(int index) const;
 void remove(int index);
 ```
 
-* Provide two overloads of operator[]:
+* Provide two overloads of `operator[]`:
   * Provide a const member function overload which returns the data at the specified array index.
   * Provide a non-const member function overload which allows the data to be overwritten at the specified array index.
 
-* Write an overloaded ostream operator to display the contents of the array.
-* Describe why the compiler generated copy constructor and copy assignment operators are sufficient for DynamicArray.
+* Write an overloaded ostream `operator<<` to display the contents of the array.
+* Describe why the compiler generated copy constructor and copy assignment operators are sufficient for `DynamicArray`.
