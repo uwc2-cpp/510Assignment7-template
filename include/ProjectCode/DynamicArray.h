@@ -1,4 +1,5 @@
-#include "DynamicArray.h"
+#pragma once
+#include "ProjectCode_API.h"
 
 //An array is a common structure for storing information.In many languages, one must specify the size of the array in advance of its use.
 //Frequently, however, one does not know how much data will need to be stored.
@@ -27,6 +28,9 @@
 //
 //2. Write an overloaded ostream operator to display the contents of the array.
 //
-//3. Describe why the compiler generated copy constructor and copy assignment operators are sufficient for DynamicArray.
 
-//TODO: implement.
+class PROJECTCODE_API DynamicArray
+{
+	//3. Describe why the compiler generated copy constructor and copy assignment operators are sufficient for DynamicArray.
+	//YOUR ANSWER GOES HERE
+};

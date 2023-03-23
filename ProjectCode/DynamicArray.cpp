@@ -1,4 +1,4 @@
-#pragma once
+#include "DynamicArray.h"
 
 //An array is a common structure for storing information.In many languages, one must specify the size of the array in advance of its use.
 //Frequently, however, one does not know how much data will need to be stored.
@@ -26,7 +26,3 @@
 // * Provide a non - const member function overload which allows the data to be overwritten at the specified array index.
 //
 //2. Write an overloaded ostream operator to display the contents of the array.
-//
-//3. Describe why the compiler generated copy constructor and copy assignment operators are sufficient for DynamicArray.
-
-//TODO: implement.
