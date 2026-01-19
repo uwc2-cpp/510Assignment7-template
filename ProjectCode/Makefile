@@ -47,11 +47,10 @@ all: directories ../bin/libProjectCode.dll
 
 else
 
-libProjectCode.so: $(OBJ)
-		ar rcs libProjectCode.so $(OBJ)
-		ranlib libProjectCode.so
+../bin/libProjectCode.so: $(OBJ)
+	$(CXX) -shared -o ../bin/libProjectCode.so $(OBJ)
 
-all: directories libProjectCode.so
+all: directories ../bin/libProjectCode.so
 
 endif
 
