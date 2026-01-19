@@ -8,7 +8,12 @@ else
    OPTFLAGS=-O3
 endif
 
-CFLAGS=-I. -I../include/ProjectCode -std=c++20 -Wall -Werror -shared $(OPTFLAGS)
+# See if this is in a MSYS session under Windows, and if so, declare declspec properly.
+ifeq ($(OS),Windows_NT)
+CPPDEFINES=-DPROJECTCODEDLL_EXPORTS
+endif
+
+CFLAGS=-I. -I../include/ProjectCode -std=c++20 -Wall -Werror -shared $(OPTFLAGS) $(CPPDEFINES)
 
 PROJDIR := $(realpath $(CURDIR)/..)
 BUILDDIR := $(PROJDIR)/Output
@@ -33,11 +38,24 @@ $(foreach targetdir, $(TARGETDIRS), $(eval $(call generateRules, $(targetdir))))
 directories:
 	mkdir -p $(TARGETDIRS)
 
+ifeq ($(OS),Windows_NT)
+
+../bin/libProjectCode.dll: $(OBJ)
+	$(CXX) -shared -o ../bin/libProjectCode.dll $(OBJ)
+
+all: directories ../bin/libProjectCode.dll
+
+else
+
 libProjectCode.so: $(OBJ)
-	ar rcs libProjectCode.so $(OBJ)
-	ranlib libProjectCode.so
+		ar rcs libProjectCode.so $(OBJ)
+		ranlib libProjectCode.so
 
 all: directories libProjectCode.so
+
+endif
+
+
 
 clean:
 	rm -rf $(TARGETDIRS)
